@@ -38,9 +38,12 @@
         .logo {
             width: 180px;
             height: 60px;
-            background-color: #004d99; /* Example color, replace with an actual logo image */
-            border-radius: 8px;
-            display: inline-block;
+            width: 180px; /* Šířka vašeho loga */
+            height: 60px; /* Výška vašeho loga */
+            background-image: url('logo.png'); /* Cesta k souboru s logem */
+            background-size: contain; /* Zajišťuje, že se obrázek vejde do vymezeného prostoru */
+            background-repeat: no-repeat; /* Zabrání opakování obrázku */
+            background-position: center; /* Vycentruje obrázek */
         }
         
         h1 {
@@ -144,3 +147,4 @@
 </body>
 
 </html>
+
