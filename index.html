@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutěž s VSP Data</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .logo {
+            width: 180px;
+            height: 60px;
+            background-color: #004d99; /* Example color, replace with an actual logo image */
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .user-info {
+            color: #555;
+            font-size: 1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .user-info p {
+            margin: 5px 0;
+        }
+
+        #points-display {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .main-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .main-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .text-section {
+            text-align: left;
+            margin-top: 30px;
+            font-size: 0.95em;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .text-section a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .text-section a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo"></div>
+        </div>
+
+        <h1>Získejte body na opravu zařízení Samsung zdarma</h1>
+        <div class="user-info">
+            <p>Přihlášený uživatel: adamrudolfsky@outlook.cz</p>
+            <p>Počet bodů: <span id="points-display"></span></p>
+        </div>
+
+        <a href="https://lobotom.com" class="main-button">Získávat body</a>
+
+        <div class="text-section">
+            <p>Klikněte na tlačítko a získávejte body plněním misí na Microsoft RW, kde jsme pro vás ve spolupráci s Microsoftem tuto soutěž připravili. Plňte mise a výzvy o kyberbezpečnosti, systémech a IT a získávejte body. Při spuštění MS RW použijte váš VSP Data účet. Denně můžete získat maximálně 50 bodů. 1 bod odpovídá 1 Kč. Za odpovídající počet bodů můžete uplatnit opravu libovolného produktu Samsung v našem servise. Ať už se jedná o pozáruční opravu nebo záruční opravu (poškozeno uživatelem), můžete vyměnit tyto body za opravu a opravu hradíme my. Oprava proběhne stejně, jako když platíte vy. Tímto můžete zaplatit celou opravu, nebo získat slevu na opravu. Lze to použít pouze jednorázově a pouze na jednu opravu (pokud získáte více bodů třeba 3000 a oprava stojí 2500, zbylých 500 bodů propadne a již je nepůjde použít). Takto můžete zaplatit nebo získat slevu pouze jednou! Kompletní podmínky <a href="https://vsps.com">ZDE</a>. Pro využití slevy nebo zaplacení opravy body zašlete produkt na opravu na naše servisní středisko a do poznámky uveďte váš e-mail, na kterém jste body získali. Alternativně můžete zboží zaslat přes prodejce se svým e-mailem v poznámce nebo na reklamačním protokolu. Sleva neplatí na přepravu a pro její využití musíte být starší patnácti let.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch points from a file named 'body.txt'
+            fetch('body.txt')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(points => {
+                    document.getElementById('points-display').textContent = points.trim();
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    document.getElementById('points-display').textContent = 'N/A';
+                });
+        });
+    </script>
+</body>
+</html>
